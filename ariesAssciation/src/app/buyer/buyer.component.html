@@ -1,0 +1,144 @@
+
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <a class="navbar-brand"  style="color:white;float: right;">Aeries Association</a>
+
+      <div class="float-right  navbar-collapse" id="navbarColor02" >
+       <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+             <a class="nav-link">Buyer List <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" (click)="movetovocher()">Vocher List <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" (click)="moveToUsers()">Application User</a>
+            </li>
+        </ul>
+    </div> 
+ 
+    <form class="form-inline my-2 my-lg-0">
+      <input type="search" (ngModelChange)="searchBuyer(key.value)" #key="ngModel"  ngModel
+       name="key"  id="searchName" class="form-control mr-sm-2" placeholder="Search Buyer..." required>
+   </form>
+     
+  </nav>
+ <div class="container" id="main-contianer">
+    <br>
+    <div class="row">
+        <div class="col-xs-4"><a href="#" class="btn btn-info center-block" data-toggle="modal" data-target="#buyeradd" data-backdrop="false" style="float: left;">Add Buyer</a></div>
+    </div>
+    <br>
+    <div class="row">
+        <div *ngFor="let buyer of buyers;let indexOfbuyer=index" class="col-md-6 col-xl-3">
+            <div class="card m-b-30">
+                <div class="card-body row">
+                    <div class="col-12">
+                        <div class="float-left btn-group btn-group-sm"><b>{{indexOfbuyer+1}}. {{buyer?.buyerName}}</b></div>
+                    </div>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><i class="fa fa-money float-right"></i>Invoice Amt : {{buyer?.invoiceAmount}}</li>
+                    <li class="list-group-item"><i class="fa fa-phone float-right"></i>Phone : {{buyer?.phoneNumber}}</li>
+                </ul>
+                <div class="card-body">
+                    <div class="float-right btn-group btn-group-sm">
+                        <a href="#" class="btn btn-primary tooltips" data-placement="top" data-toggle="modal" (click)="onOpenModal(buyer)" data-target="#buyeredit" data-backdrop="false" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                        <a href="#" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" (click)="onOpenModal(buyer)" data-original-title="Delete" data-toggle="modal" data-target="#deleteBuyerModal" data-backdrop="false"  ><i class="fa fa-times"></i></a>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+       
+   <!--Add Employee-->
+   <div class="modal fade" id="buyeradd" tabindex="-1" aria-labelledby="addBuyerModalLablel" aria-hidden="true">
+    <div class="modal-dialog"  role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addBuyerModalLablel">Add Buyer</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <form #addForm="ngForm"  (ngSubmit)="addBuyers(addForm)">
+            <div class="form-group">
+                <label for="buyerName">Buyer Name</label>
+                <input  type="text" ngModel id="buyerNameAdd" name="buyerName" class="form-control" id="buyerName" placeholder="Buyer Name" required>
+            </div>
+            <div class="form-group">
+                <label for="investment">Invoice Amt</label>
+                <input type="number" ngModel name="invoiceAmount" class="form-control" id="invoiceAmount" placeholder="Invoice Amount" required>
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="number"   ngModel name="phoneNumber" class="form-control" id="phoneNumber" pattern="^[7-9][0-9]{9}$"  placeholder="Phone Number" minlength="10" maxlength="10" required>
+            </div>
+            <div class="modal-footer">
+                <button [disabled]="addForm.invalid"  (keypress.enter)="addBuyers(addForm)" type="submit" class="btn btn-primary" >Save changes</button>
+                <button type="button"  id="addFormClose" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <!----Edit Buyer-->
+  <div class="modal fade" id="buyeredit" tabindex="-1" aria-labelledby="editBuyerModalLablel" aria-hidden="true">
+    <div class="modal-dialog"  role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editBuyerModalLablel">Edit Buyer</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <form #editForm="ngForm"  (ngSubmit)="editBuyers(editForm)">
+              <div class="form-group">
+                <label for="buyerName">Buyer Name</label>
+                <input type="hidden" name="buyerId" id="buyerId" ngModel="{{buyer?.buyerId}}">
+                <input  type="text" ngModel="{{buyer?.buyerName}}" id="buyerNameAdd" name="buyerName" class="form-control" id="buyerName" placeholder="Buyer Name" required>
+            </div>
+            <div class="form-group">
+                <label for="investment">Invoice Amt</label>
+                <input type="number" ngModel="{{buyer?.invoiceAmount}}" name="invoiceAmount" class="form-control" id="invoiceAmount" placeholder="Invoice Amount" required>
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="number"   ngModel="{{buyer?.phoneNumber}}" name="phoneNumber" class="form-control" id="phoneNumber" pattern="^[7-9][0-9]{9}$"  placeholder="Phone Number" minlength="10" maxlength="10" required>
+            </div>
+            <div class="modal-footer">
+              <button   (keypress.enter)="editBuyers(editForm)" type="submit" class="btn btn-primary" >Update changes</button>
+              <button type="button"  id="editFormClose" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            </form>
+          </div>
+          </div>
+          </div>
+          </div>
+
+          <!--Delete-->
+          <div class="modal fade" id="deleteBuyerModal" tabindex="-1" role="dialog" aria-labelledby="deleteBuyerModalLablel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                   <h5 class="modal-title" id="deleteModelLabel">Delete Buyer</h5>
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                   </button>
+                </div>
+                <div class="modal-body">
+            <label for="name">Are you sure you want to delete {{buyer?.buyerName}}?</label>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button (click)="onDeleteBuyer(buyer?.buyerId)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+             </div>
+             </div>
+           </div>
+           </div>
+           </div>
+    </div>
+  </div>
