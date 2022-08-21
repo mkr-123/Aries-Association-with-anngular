@@ -21,7 +21,7 @@
  
     <form class="form-inline my-2 my-lg-0">
       <input type="search" #key="ngModel"  ngModel
-       name="key"  id="searchName" class="form-control mr-sm-2" placeholder="Search Application..." required>
+       name="key"  id="searchName" class="form-control mr-sm-2" placeholder="Search User..." required>
    </form>
      
   </nav>
@@ -29,7 +29,7 @@
   <div class="container">
     <br>
     <div class="row">
-        <div class="col-xs-4"><a href="#" class="btn btn-info center-block" data-toggle="modal" data-target="#buyeradd" data-backdrop="false" style="float: left;">Add User</a></div>
+        <div class="col-xs-4"><a href="#" class="btn btn-info center-block" data-toggle="modal" data-target="#useradd" data-backdrop="false" style="float: left;">Add User</a></div>
     </div>
     <br>
     <div class="row">
@@ -41,243 +41,22 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
+                                    <th>SL No.</th>
                                     <th>User</th>
-                                    <th>Edit</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="table-img"><img src="https://bootdey.com/img/Content/avatar/avatar8.png" alt="">
+                            <tbody *ngFor="let users of users;let indexOfUser=index;even as isEven"   [ngStyle]="{ background: isEven ? '#e9e9eb' : 'white' }">
+                                <tr >
+                                    <td><b>{{indexOfUser+1}}</b></td>
+                                    <td> <span class="col-green font-weight-bold">{{users?.applicationUserName}}</span>
                                     </td>
                                     <td>
                                         <a data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a>
                                         <a data-toggle="tooltip" title="" data-original-title="Delete"><i class="far fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="table-img"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                                    </td>
-                                    <td>
-                                        <h6 class="mb-0 font-13">Android Game App</h6>
-                                        <p class="m-0 font-12">
-                                            Assigned to<span class="col-green font-weight-bold"> Sarah Smith</span>
-                                        </p>
-                                    </td>
-                                    <td>22-05-2019</td>
-                                    <td class="text-truncate">
-                                        <ul class="list-unstyled order-list m-b-0">
-                                            <li class="team-member team-member-sm"><img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="user" data-toggle="tooltip" title="" data-original-title="Wildan Ahdian"></li>
-                                            <li class="team-member team-member-sm"><img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="user" data-toggle="tooltip" title="" data-original-title="John Deo"></li>
-                                            <li class="team-member team-member-sm"><img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="user" data-toggle="tooltip" title="" data-original-title="Sarah Smith"></li>
-                                            <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <div class="badge-outline col-green">Low</div>
-                                    </td>
-                                    <td class="align-middle">
-                                        <div class="progress-text">55%</div>
-                                        <div class="progress" data-height="6" style="height: 6px;">
-                                            <div class="progress-bar bg-purple" data-width="55%" style="width: 55%;"></div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                        <a data-toggle="tooltip" title="" data-original-title="Delete"><i class="far fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="table-img"><img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="">
-                                    </td>
-                                    <td>
-                                        <h6 class="mb-0 font-13">Java Web Service</h6>
-                                        <p class="m-0 font-12">
-                                            Assigned to<span class="col-green font-weight-bold"> Cara Stevens</span>
-                                        </p>
-                                    </td>
-                                    <td>11-04-2019</td>
-                                    <td class="text-truncate">
-                                        <ul class="list-unstyled order-list m-b-0">
-                                            <li class="team-member team-member-sm"><img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="user" data-toggle="tooltip" title="" data-original-title="Wildan Ahdian"></li>
-                                            <li class="team-member team-member-sm"><img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="user" data-toggle="tooltip" title="" data-original-title="John Deo"></li>
-                                            <li class="team-member team-member-sm"><img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="user" data-toggle="tooltip" title="" data-original-title="Sarah Smith"></li>
-                                            <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <div class="badge-outline col-blue">Medium</div>
-                                    </td>
-                                    <td class="align-middle">
-                                        <div class="progress-text">70%</div>
-                                        <div class="progress" data-height="6" style="height: 6px;">
-                                            <div class="progress-bar" data-width="70%" style="width: 70%;"></div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                        <a data-toggle="tooltip" title="" data-original-title="Delete"><i class="far fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="table-img"><img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
-                                    </td>
-                                    <td>
-                                        <h6 class="mb-0 font-13">Wedding IOS App</h6>
-                                        <p class="m-0 font-12">
-                                            Assigned to<span class="col-green font-weight-bold"> John Doe</span>
-                                        </p>
-                                    </td>
-                                    <td>19-05-2019</td>
-                                    <td class="text-truncate">
-                                        <ul class="list-unstyled order-list m-b-0">
-                                            <li class="team-member team-member-sm"><img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="user" data-toggle="tooltip" title="" data-original-title="Wildan Ahdian"></li>
-                                            <li class="team-member team-member-sm"><img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="user" data-toggle="tooltip" title="" data-original-title="John Deo"></li>
-                                            <li class="team-member team-member-sm"><img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="user" data-toggle="tooltip" title="" data-original-title="Sarah Smith"></li>
-                                            <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <div class="badge-outline col-red">High</div>
-                                    </td>
-                                    <td class="align-middle">
-                                        <div class="progress-text">45%</div>
-                                        <div class="progress" data-height="6" style="height: 6px;">
-                                            <div class="progress-bar bg-cyan" data-width="45%" style="width: 45%;"></div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                        <a data-toggle="tooltip" title="" data-original-title="Delete"><i class="far fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="table-img"><img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
-                                    </td>
-                                    <td>
-                                        <h6 class="mb-0 font-13">Blize Admin Template</h6>
-                                        <p class="m-0 font-12">
-                                            Assigned to<span class="col-green font-weight-bold"> Ashton Cox</span>
-                                        </p>
-                                    </td>
-                                    <td>25-07-2019</td>
-                                    <td class="text-truncate">
-                                        <ul class="list-unstyled order-list m-b-0">
-                                            <li class="team-member team-member-sm"><img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="user" data-toggle="tooltip" title="" data-original-title="Wildan Ahdian"></li>
-                                            <li class="team-member team-member-sm"><img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="user" data-toggle="tooltip" title="" data-original-title="John Deo"></li>
-                                            <li class="team-member team-member-sm"><img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="user" data-toggle="tooltip" title="" data-original-title="Sarah Smith"></li>
-                                            <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <div class="badge-outline col-blue">Medium</div>
-                                    </td>
-                                    <td class="align-middle">
-                                        <div class="progress-text">67%</div>
-                                        <div class="progress" data-height="6" style="height: 6px;">
-                                            <div class="progress-bar bg-red" data-width="67%" style="width: 67%;"></div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                        <a data-toggle="tooltip" title="" data-original-title="Delete"><i class="far fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="table-img"><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
-                                    </td>
-                                    <td>
-                                        <h6 class="mb-0 font-13">React js website</h6>
-                                        <p class="m-0 font-12">
-                                            Assigned to<span class="col-green font-weight-bold"> Sarah Smith </span>
-                                        </p>
-                                    </td>
-                                    <td>11-08-2019</td>
-                                    <td class="text-truncate">
-                                        <ul class="list-unstyled order-list m-b-0">
-                                            <li class="team-member team-member-sm"><img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="user" data-toggle="tooltip" title="" data-original-title="Wildan Ahdian"></li>
-                                            <li class="team-member team-member-sm"><img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="user" data-toggle="tooltip" title="" data-original-title="John Deo"></li>
-                                            <li class="team-member team-member-sm"><img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="user" data-toggle="tooltip" title="" data-original-title="Sarah Smith"></li>
-                                            <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <div class="badge-outline col-green">Low</div>
-                                    </td>
-                                    <td class="align-middle">
-                                        <div class="progress-text">41%</div>
-                                        <div class="progress" data-height="6" style="height: 6px;">
-                                            <div class="progress-bar bg-orange" data-width="41%" style="width: 41%;"></div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                        <a data-toggle="tooltip" title="" data-original-title="Delete"><i class="far fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="table-img"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-                                    </td>
-                                    <td>
-                                        <h6 class="mb-0 font-13">SEO improvement</h6>
-                                        <p class="m-0 font-12">
-                                            Assigned to<span class="col-green font-weight-bold"> Janak Gandhi</span>
-                                        </p>
-                                    </td>
-                                    <td>22-02-2018</td>
-                                    <td class="text-truncate">
-                                        <ul class="list-unstyled order-list m-b-0">
-                                            <li class="team-member team-member-sm"><img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="user" data-toggle="tooltip" title="" data-original-title="Wildan Ahdian"></li>
-                                            <li class="team-member team-member-sm"><img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="user" data-toggle="tooltip" title="" data-original-title="John Deo"></li>
-                                            <li class="team-member team-member-sm"><img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="user" data-toggle="tooltip" title="" data-original-title="Sarah Smith"></li>
-                                            <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <div class="badge-outline col-red">High</div>
-                                    </td>
-                                    <td class="align-middle">
-                                        <div class="progress-text">70%</div>
-                                        <div class="progress" data-height="6" style="height: 6px;">
-                                            <div class="progress-bar bg-success" data-width="70%" style="width: 70%;"></div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                        <a data-toggle="tooltip" title="" data-original-title="Delete"><i class="far fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="table-img"><img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
-                                    </td>
-                                    <td>
-                                        <h6 class="mb-0 font-13">Laravel Website</h6>
-                                        <p class="m-0 font-12">
-                                            Assigned to<span class="col-green font-weight-bold"> Mili Rain</span>
-                                        </p>
-                                    </td>
-                                    <td>31-03-2019</td>
-                                    <td class="text-truncate">
-                                        <ul class="list-unstyled order-list m-b-0">
-                                            <li class="team-member team-member-sm"><img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar8.png" alt="user" data-toggle="tooltip" title="" data-original-title="Wildan Ahdian"></li>
-                                            <li class="team-member team-member-sm"><img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="user" data-toggle="tooltip" title="" data-original-title="John Deo"></li>
-                                            <li class="team-member team-member-sm"><img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="user" data-toggle="tooltip" title="" data-original-title="Sarah Smith"></li>
-                                            <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <div class="badge-outline col-green">Low</div>
-                                    </td>
-                                    <td class="align-middle">
-                                        <div class="progress-text">55%</div>
-                                        <div class="progress" data-height="6" style="height: 6px;">
-                                            <div class="progress-bar bg-purple" data-width="55%" style="width: 55%;"></div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                        <a data-toggle="tooltip" title="" data-original-title="Delete"><i class="far fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
+                              
                             </tbody>
                         </table>
                     </div>
@@ -286,26 +65,26 @@
         </div>
     </div>
 
-    <div class="modal fade" id="buyeradd" tabindex="-1" aria-labelledby="addBuyerModalLablel" aria-hidden="true">
+    <div class="modal fade" id="useradd" tabindex="-1" aria-labelledby="addUserModalLablel" aria-hidden="true">
         <div class="modal-dialog"  role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="addBuyerModalLablel">Add Buyer</h5>
+              <h5 class="modal-title" id="addUserModalLablel">Add User</h5>
               <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-              <form >
+              <form #addForm="ngForm"  (ngSubmit)="addUser(addForm)">
                 <div class="form-group">
                     <label for="buyerName">User</label>
-                    <input  type="text" ngModel id="buyerNameAdd" name="buyerName" class="form-control" id="buyerName" placeholder="Buyer Name" required>
+                    <input  type="text" ngModel id="applicationUserName" name="applicationUserName" class="form-control" id="User Name" placeholder="User Name" required>
                 </div>
              
                 <div class="form-group">
                     <label for="phoneNumber">Password</label>
-                    <input type="password"   ngModel name="phoneNumber" class="form-control" id="phoneNumber" pattern="^[7-9][0-9]{9}$"  placeholder="Phone Number" minlength="10" maxlength="10" required>
+                    <input type="password"   ngModel name="password" class="form-control" id="password"   placeholder="Password"  required>
                 </div>
                 <div class="modal-footer">
-                    <button  type="submit" class="btn btn-primary" >Save changes</button>
+                    <button [disabled]="addForm.invalid"  (keypress.enter)="addUser(addForm)" type="submit" class="btn btn-primary" >Save</button>
                     <button type="button"  id="addFormClose" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   </div>
               </form>
